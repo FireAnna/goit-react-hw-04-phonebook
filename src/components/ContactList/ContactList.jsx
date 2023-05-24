@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+
 import PropTypes from 'prop-types';
 import css from './ContactList.module.css'
 
 
 
-class ContactList extends Component {
-  
+const ContactList = ({filteredName, deleteContact, contacts})=> {
 
-  
-  render() {
-
-    if (this.props.filteredName === '') {
+    if ( filteredName === '') {
       return (
         <ul className={css.ul}>
-          {this.props.contacts.map(({ id, name, number }) => {
+          { contacts.map(({ id, name, number }) => {
             return (
               <li className={css.li} key={id}>
                 <p>
@@ -22,7 +18,7 @@ class ContactList extends Component {
                 <button
                   className={css.btn}
                   onClick={() => {
-                    this.props.deleteContact(id);
+                    deleteContact(id);
                   }}
                 >
                   Delete
@@ -36,7 +32,7 @@ class ContactList extends Component {
       
       return (
         <ul className={css.ul}>
-          {this.props.contacts.filter(contacts => contacts.name.toLowerCase().includes(this.props.filteredName.toLowerCase())).map(({ id, name, number }) => {
+          {contacts.filter(contacts => contacts.name.toLowerCase().includes(filteredName.toLowerCase())).map(({ id, name, number }) => {
             return (
               <li className={css.li} key={id}>
                 <p>
@@ -45,7 +41,7 @@ class ContactList extends Component {
                 <button
                   className={css.btn}
                   onClick={() => {
-                    this.props.deleteContact(id);
+                    deleteContact(id);
                   }}
                 >
                   Delete
@@ -58,7 +54,7 @@ class ContactList extends Component {
       
     }
   }
-}
+
 
 ContactList.propTypes = {
     contacts: PropTypes.arrayOf(PropTypes.shape({
