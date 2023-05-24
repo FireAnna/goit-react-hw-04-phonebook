@@ -22,7 +22,7 @@ const formSubmit = e => {
     const {name, number} = state
 
     return (
-      <form className={css.form} onSubmit={this.formSubmit}>
+      <form className={css.form} onSubmit={formSubmit}>
         <label>
           <p className={css.title}>Name</p>
           <input
